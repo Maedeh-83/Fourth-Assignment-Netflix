@@ -114,7 +114,5 @@ class NetflixService {
             System.out.println(data);
         }
     }
-
-
 }
 

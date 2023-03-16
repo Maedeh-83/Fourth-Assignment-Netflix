@@ -20,8 +20,6 @@ class Movie extends TVShow {
         this.synopsis = synopsis;
     }
 
-
-
     public int getQuality() {
         return quality;
     }

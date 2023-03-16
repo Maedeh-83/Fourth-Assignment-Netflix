@@ -65,7 +65,6 @@ class TVShow {
         this.rating = rating;
     }
 
-
     public String toString(TVShow tvshow) {
         return "TVShow{" +
                 "title='" + title + '\'' +

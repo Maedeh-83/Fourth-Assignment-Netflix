@@ -358,8 +358,6 @@ public class Main {
         NetflixService.createAdminAccount(admin2);
         NetflixService.createAdminAccount(admin3);
 
-
-
         START();
 
     }
