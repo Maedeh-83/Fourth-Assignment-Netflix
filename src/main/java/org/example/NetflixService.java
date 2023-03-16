@@ -10,6 +10,7 @@ class NetflixService {
     Scanner input = new Scanner(System.in);
 
     private static List<User> usersList;
+    private static List<Admin> adminsList;
     private static List<TVShow> TVshowList;
     private static List<Movie> movieList;
 
@@ -17,6 +18,7 @@ class NetflixService {
         this.usersList = new ArrayList<>();
         this.TVshowList = new ArrayList<>();
         this.movieList = new ArrayList<>();
+        this.adminsList = new ArrayList<>();
     }
 
     public static void addTVShow(TVShow tvShow){
@@ -29,13 +31,26 @@ class NetflixService {
         movieList.add(movie);
     }
 
-    public static void createAccount(User user) {
+    public static void createUserAccount(User user) {
         usersList.add(user);
     }
 
-    public static boolean login(String username, String password) {
+    public static void createAdminAccount(Admin admin) {
+        adminsList.add(admin);
+    }
+
+    public static boolean Userslogin(String username, String password) {
         for(User user : usersList){
             if(user.getUsername().equals(username) && user.getPassword().equals(password)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean Adminslogin(String username, String password) {
+        for(Admin admin : adminsList){
+            if(admin.getUsername().equals(username) && admin.getPassword().equals(password)){
                 return true;
             }
         }

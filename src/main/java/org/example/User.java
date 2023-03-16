@@ -17,6 +17,9 @@ class User {
         this.username = username;
         this.password = password;
     }
+    public User(){
+        this.favoriteList= new ArrayList<>();
+    }
 
     public String getUsername() {
         return this.username;
@@ -75,13 +78,9 @@ class User {
         }
     }
 
-    public static ArrayList<TVShow> getRecommendations(String showName){
-        ArrayList<TVShow> Recomm = new ArrayList<TVShow>();
-        for(TVShow tvshow: favoriteList){
-            if(favoriteList.contains(showName)){
-                Recomm.add(tvshow);
-            }
-        }
+    public static ArrayList<String> getRecommendations(String showName){
+        ArrayList<String> Recomm = new ArrayList<String>();
+        Recomm.add(showName);
         return Recomm;
     }
 }

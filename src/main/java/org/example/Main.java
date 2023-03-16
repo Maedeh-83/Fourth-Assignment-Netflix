@@ -17,24 +17,67 @@ public class Main {
                 String username;
                 String password;
                 Scanner input = new Scanner(System.in);
-                System.out.println("Login:");
-                System.out.println("Enter Username:");
-                username = input.next();
-                System.out.println("Enter password:");
-                password = input.next();
-                if (NetflixService.login(username, password)) {
-                    System.out.println("you logged in!");
-                    userPanel();
+                System.out.println("Have you an account?");
+                System.out.println("1-Yes   2-No");
+                int answer = input.nextInt();
+                if(answer==1) {
+                    System.out.println("Login:");
+                    System.out.println("Enter Username:");
+                    username = input.next();
+                    System.out.println("Enter password:");
+                    password = input.next();
+                    if (NetflixService.Userslogin(username, password)) {
+                        System.out.println("you logged in!");
+                        userPanel();
+                    } else {
+                        System.out.println("user not found!");
+                        Main.START();
+                    }
                 }
-                else {
-                    System.out.println("user not found!");
-                    Main.START();
+                if(answer==2){
+                    System.out.println("Creating a new account:");
+                    System.out.println("Enter username:");
+                    username = input.next();
+                    System.out.println("Enter password:");
+                    password = input.next();
+                    User newAccont = new User(username, password);
+                    NetflixService.createUserAccount(newAccont);
+                    System.out.println("your account created succefully!");
+                    System.out.println("Do you want to continue(1) or get out(2)?");
+                    int answer1= input.nextInt();
+                    if(answer1==1){
+                        userPanel();
+                    }
+                    if (answer1==2){
+                        START();
+                    }
                 }
+
                 break;
 
+
+
             case 2:
-                adminPanel();
+                String username1;
+                String password1;
+                Scanner input1 = new Scanner(System.in);
+                System.out.println("Admin Login:");
+                System.out.println("Enter Username:");
+                username = input1.next();
+                System.out.println("Enter password:");
+                password = input1.next();
+                if (NetflixService.Adminslogin(username, password)) {
+                        System.out.println("you logged in!");
+                        adminPanel();
+                    }
+                else {
+                        System.out.println("admin not found!");
+                        Main.START();
+                    }
+
+
                 break;
+
 
             default:
                 System.out.println("Wrong Input!");
@@ -76,7 +119,7 @@ public class Main {
                         String genre = input.next();
                         NetflixService.searchByGenre(genre);
                         userPanel();
-                        break;
+                         break;
 
                     case 3:     //searchByReleaseYear
                         System.out.println("Enter your desired year:");
@@ -148,6 +191,7 @@ public class Main {
                 System.out.println("Enter your tvshow name that you recomm:");
                 String tvshowName1 = input.next();
                 User.getRecommendations(tvshowName1);
+                System.out.println("Thank you for your suggestion!");
                 userPanel();
                 break;
 
@@ -184,7 +228,7 @@ public class Main {
                 System.out.println("Enter password:");
                 password = input.next();
                 User newAccont = new User(username, password);
-                NetflixService.createAccount(newAccont);
+                NetflixService.createUserAccount(newAccont);
                 System.out.println("new accont Has Been Successfully Added to users list!");
 
                 adminPanel();
@@ -299,12 +343,21 @@ public class Main {
         User user5 = new User("Saeed", "1234567");
         User user6 = new User("Nobody", "12345678");
 
-        NetflixService.createAccount(user1);
-        NetflixService.createAccount(user2);
-        NetflixService.createAccount(user3);
-        NetflixService.createAccount(user4);
-        NetflixService.createAccount(user5);
-        NetflixService.createAccount(user6);
+        NetflixService.createUserAccount(user1);
+        NetflixService.createUserAccount(user2);
+        NetflixService.createUserAccount(user3);
+        NetflixService.createUserAccount(user4);
+        NetflixService.createUserAccount(user5);
+        NetflixService.createUserAccount(user6);
+
+        Admin admin1 = new Admin("A1", "111");
+        Admin admin2 = new Admin("A2", "222");
+        Admin admin3 = new Admin("A3", "333");
+
+        NetflixService.createAdminAccount(admin1);
+        NetflixService.createAdminAccount(admin2);
+        NetflixService.createAdminAccount(admin3);
+
 
 
         START();
