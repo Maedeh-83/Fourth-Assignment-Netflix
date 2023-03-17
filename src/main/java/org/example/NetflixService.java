@@ -12,8 +12,8 @@ class NetflixService {
 
     private static List<User> usersList;
     private static List<Admin> adminsList;
-    private static List<TVShow> TVshowList;
-    private static List<Movie> movieList;
+    static List<TVShow> TVshowList;
+    static List<Movie> movieList;
 
 
     public NetflixService() {
@@ -119,7 +119,7 @@ class NetflixService {
     public static void viewTvshows() {
         String data;
         for(TVShow tvShow : TVshowList){
-            data = tvShow.getTitle() + "/ " + tvShow.getYear() ;
+            data = tvShow.getTitle() + "/ " + tvShow.getYear() + "/ " + tvShow.getGenre() + "/ rating=" + tvShow.getRating() ;
             System.out.println(data);
         }
     }
@@ -127,23 +127,9 @@ class NetflixService {
     public static void viewMovies() {
         String data;
         for(Movie movie : movieList){
-            data = movie.getTitle() + "/ " + movie.getYear() ;
+            data = movie.getTitle() + "/ " + movie.getYear() + "/ " + movie.getGenre() + "/ rating=" + movie.getRating() ;
             System.out.println(data);
         }
-    }
-
-    public static TVShow SearchForTitle(String title){
-        for(TVShow show : TVshowList){
-            if(title.equals(show.getTitle())){
-                return show;
-            }
-        }
-        for(TVShow show : movieList){
-            if(title.equals(show.getTitle())){
-                return show;
-            }
-        }
-        return null;
     }
 
 

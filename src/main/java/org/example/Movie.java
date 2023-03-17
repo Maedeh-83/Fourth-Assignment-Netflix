@@ -7,12 +7,12 @@ class Movie extends TVShow {
      *Movie is extended from TVShow and has extra attribute length.
      */
 
-    private int quality;
+    private String quality;
     private String country;
     private int ageGrade;
     private String synopsis;
 
-    public Movie(String title, String genre, int year, double duration, double rating, int quality, String country, int ageGrade, String synopsis){
+    public Movie(String title, String genre, int year, double duration, double rating, String quality, String country, int ageGrade, String synopsis){
         super(title, genre, year, duration, rating);
         this.quality = quality;
         this.country = country;
@@ -20,11 +20,11 @@ class Movie extends TVShow {
         this.synopsis = synopsis;
     }
 
-    public int getQuality() {
+    public String getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    public void setQuality(String quality) {
         this.quality = quality;
     }
 

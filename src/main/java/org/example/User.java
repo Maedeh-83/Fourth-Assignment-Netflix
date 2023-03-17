@@ -16,8 +16,6 @@ class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-    public User(){
         this.favoriteList= new ArrayList<>();
     }
 

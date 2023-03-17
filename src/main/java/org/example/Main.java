@@ -2,6 +2,9 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.example.NetflixService.TVshowList;
+import static org.example.NetflixService.movieList;
+
 public class Main {
 
     static Scanner input = new Scanner(System.in);
@@ -143,12 +146,20 @@ public class Main {
             case 2:   //Add to favorite list
                 System.out.println("Enter your tvshow name:");
                 String tvshowName = input.next();
-                User.addToFavorites(NetflixService.SearchForTitle(tvshowName));
+
+                for(TVShow show : TVshowList){
+                    if(tvshowName.equals(show.getTitle())){
+                        User.addToFavorites(show);
+                    }
+                }
+                for(TVShow show : movieList){
+                    if(tvshowName.equals(show.getTitle())){
+                        User.addToFavorites(show);
+                    }
+                }
                 System.out.println("tvshow Has Been Successfully Added to favorite list!");
                 userPanel();
                 break;
-
-
 
             case 3:    //Search favorite list
                 System.out.println("search in which category?");
@@ -274,8 +285,8 @@ public class Main {
                 double duration1 = input.nextDouble();
                 System.out.println("Enter rating:");
                 double rating1 = input.nextDouble();
-                System.out.println("Enter quality:");
-                int quality = input.nextInt();
+                System.out.println("Enter quality:(Xp)");
+                String quality = input.next();
                 System.out.println("Enter country:");
                 String country = input.next();
                 System.out.println("Enter ageGrade:");
@@ -334,11 +345,11 @@ public class Main {
         NetflixService.addTVShow(tvShow6);
         NetflixService.addTVShow(tvShow7);
 
-        Movie movie1 = new Movie("Me before you", "Romance", 2016, 110, 7.4, 720, "UK", 13, "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.");
-        Movie movie2 = new Movie("Interstellar", "Adventure", 2014, 170, 8.6, 1080, "USA", 13, "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.");
-        Movie movie3 = new Movie("The Matrix", "Action", 1999, 136, 8.7, 360, "USA, Australia", 13, "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.");
-        Movie movie4 = new Movie("Harry Potter", "Adventure", 2001, 152, 7.6, 480, "UK", 7, "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world");
-        Movie movie5 = new Movie("Avengers", "Action", 2019, 180, 8.4, 720, "USA", 13, "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.");
+        Movie movie1 = new Movie("Me before you", "Romance", 2016, 110, 7.4, "720p", "UK", 13, "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.");
+        Movie movie2 = new Movie("Interstellar", "Adventure", 2014, 170, 8.6, "1080p", "USA", 13, "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.");
+        Movie movie3 = new Movie("The Matrix", "Action", 1999, 136, 8.7, "360p", "USA, Australia", 13, "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.");
+        Movie movie4 = new Movie("Harry Potter", "Adventure", 2001, 152, 7.6, "480p", "UK", 7, "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world");
+        Movie movie5 = new Movie("Avengers", "Action", 2019, 180, 8.4, "720p", "USA", 13, "After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.");
 
         NetflixService.addMovie(movie1);
         NetflixService.addMovie(movie2);
