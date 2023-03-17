@@ -3,6 +3,7 @@ package org.example;
 import java.util.*;
 
 class NetflixService {
+    public static User getCurrentUser;
     /*
      *The NetflixService should have an Arraylist of users, tv shows and movies.
      *The NetflixService should have a User object which represents current user.
@@ -13,6 +14,7 @@ class NetflixService {
     private static List<Admin> adminsList;
     private static List<TVShow> TVshowList;
     private static List<Movie> movieList;
+
 
     public NetflixService() {
         this.usersList = new ArrayList<>();
@@ -64,7 +66,12 @@ class NetflixService {
     public static ArrayList<TVShow> searchByTitle(String title){
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: TVshowList){
-            if(TVshowList.contains(title)){
+            if(tvshow.getTitle().contains(title)){
+                found.add(tvshow);
+            }
+        }
+        for(TVShow tvshow : movieList){
+            if(tvshow.getTitle().contains(title)){
                 found.add(tvshow);
             }
         }
@@ -74,7 +81,12 @@ class NetflixService {
     public static ArrayList<TVShow> searchByGenre(String genre){
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: TVshowList){
-            if(TVshowList.contains(genre)){
+            if(tvshow.getGenre().contains(genre)){
+                found.add(tvshow);
+            }
+        }
+        for(TVShow tvshow : movieList){
+            if(tvshow.getGenre().contains(genre)){
                 found.add(tvshow);
             }
         }
@@ -84,7 +96,12 @@ class NetflixService {
     public static ArrayList<TVShow> searchByReleaseYear(int year) {
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: TVshowList){
-            if(TVshowList.contains(year)){
+            if(tvshow.getYear() == year){
+                found.add(tvshow);
+            }
+        }
+        for(TVShow tvshow : movieList){
+            if(tvshow.getYear() == year){
                 found.add(tvshow);
             }
         }
@@ -114,5 +131,21 @@ class NetflixService {
             System.out.println(data);
         }
     }
+
+    public static TVShow SearchForTitle(String title){
+        for(TVShow show : TVshowList){
+            if(title.equals(show.getTitle())){
+                return show;
+            }
+        }
+        for(TVShow show : movieList){
+            if(title.equals(show.getTitle())){
+                return show;
+            }
+        }
+        return null;
+    }
+
+
 }
 

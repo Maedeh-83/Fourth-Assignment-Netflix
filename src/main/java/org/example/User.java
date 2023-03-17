@@ -38,7 +38,7 @@ class User {
     public static ArrayList<TVShow> searchByTitle(String title) {
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: favoriteList){
-            if(favoriteList.contains(title)){
+            if(tvshow.getTitle().contains(title)){
                 found.add(tvshow);
             }
         }
@@ -48,7 +48,7 @@ class User {
     public static ArrayList<TVShow> searchByGenre(String genre) {
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: favoriteList){
-            if(favoriteList.contains(genre)){
+            if(tvshow.getGenre().contains(genre)){
                 found.add(tvshow);
             }
         }
@@ -58,7 +58,7 @@ class User {
     public static ArrayList<TVShow> searchByReleaseYear(int year) {
         ArrayList<TVShow> found = new ArrayList<TVShow>();
         for(TVShow tvshow: favoriteList){
-            if(favoriteList.contains(year)){
+            if(tvshow.getYear()==year){
                 found.add(tvshow);
             }
         }

@@ -1,4 +1,5 @@
 package org.example;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -110,21 +111,30 @@ public class Main {
                     case 1:     //searchByTitle
                         System.out.println("Enter your tvshow name:");
                         String name = input.next();
-                        NetflixService.searchByTitle(name);
+                        ArrayList<TVShow> result =  NetflixService.searchByTitle(name);
+                        for(TVShow show : result){
+                            System.out.println(show.getTitle()+ " - "+ show.getGenre()+ " - "+ show.getYear());
+                        }
                         userPanel();
                         break;
 
                     case 2:     //searchByGenre
                         System.out.println("Enter your desired genre:");
                         String genre = input.next();
-                        NetflixService.searchByGenre(genre);
+                        ArrayList<TVShow> result1 = NetflixService.searchByGenre(genre);
+                        for(TVShow show : result1){
+                            System.out.println(show.getTitle()+ " - "+ show.getGenre()+ " - "+ show.getYear());
+                        }
                         userPanel();
                          break;
 
                     case 3:     //searchByReleaseYear
                         System.out.println("Enter your desired year:");
                         int year = input.nextInt();
-                        NetflixService.searchByReleaseYear(year);
+                        ArrayList<TVShow> result2 = NetflixService.searchByReleaseYear(year);
+                        for(TVShow show : result2){
+                            System.out.println(show.getTitle()+ " - "+ show.getGenre()+ " - "+ show.getYear());
+                        }
                         userPanel();
                         break;
                 }
@@ -133,19 +143,8 @@ public class Main {
             case 2:   //Add to favorite list
                 System.out.println("Enter your tvshow name:");
                 String tvshowName = input.next();
-                System.out.println("Enter your tvshow genre:");
-                String tvshowGenre = input.next();
-                System.out.println("Enter your tvshow ReleaseYear:");
-                int tvshowYear = input.nextInt();
-                System.out.println("Enter your tvshow Duration:");
-                double tvshowDuration = input.nextDouble();
-                System.out.println("Enter your tvshow rating:");
-                double tvshowRating = input.nextDouble();
-
-                TVShow tvShow = new TVShow(tvshowName, tvshowGenre, tvshowYear, tvshowDuration, tvshowRating);
-                User.addToFavorites(tvShow);
+                User.addToFavorites(NetflixService.SearchForTitle(tvshowName));
                 System.out.println("tvshow Has Been Successfully Added to favorite list!");
-
                 userPanel();
                 break;
 
@@ -161,7 +160,10 @@ public class Main {
                     case 1:     //searchByTitle
                         System.out.println("Enter your tvshow name:");
                         String name = input.next();
-                        User.searchByTitle(name);
+                        ArrayList<TVShow> result = User.searchByTitle(name);
+                        for(TVShow show : result){
+                            System.out.println(show.getTitle()+ " - "+ show.getGenre()+ " - "+ show.getYear());
+                        }
                         userPanel();
                         break;
 
@@ -169,6 +171,10 @@ public class Main {
                         System.out.println("Enter your desired genre:");
                         String genre = input.next();
                         User.searchByGenre(genre);
+                        ArrayList<TVShow> result1 = User.searchByGenre(genre);
+                        for(TVShow show : result1){
+                            System.out.println(show.getTitle()+ " - "+ show.getGenre()+ " - "+ show.getYear());
+                        }
                         userPanel();
                         break;
 
@@ -176,6 +182,10 @@ public class Main {
                         System.out.println("Enter your desired year:");
                         int year = input.nextInt();
                         User.searchByReleaseYear(year);
+                        ArrayList<TVShow> result2 = User.searchByReleaseYear(year);
+                        for(TVShow show : result2){
+                            System.out.println(show.getTitle()+ " - "+ show.getGenre()+ " - "+ show.getYear());
+                        }
                         userPanel();
                         break;
                 }
